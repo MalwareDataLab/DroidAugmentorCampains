@@ -1,19 +1,23 @@
 FROM  ubuntu:22.04
-USER root
-WORKDIR /MalSynGen
-RUN apt-get update
-RUN apt-get -y install python3-pip
-RUN apt install unzip 
-RUN rm /bin/sh && ln -s /bin/bash /bin/sh
-COPY ./ /MalSynGen/
-RUN pip3 install pipenv
-RUN pipenv lock
-RUN pipenv install -r requirements.txt
-#CMD while true; do sleep 1000; done
+WORKDIR /DroidAugmentor
 
-RUN mv /MalSynGen/scripts/run_app_in_docker.sh /usr/bin/docker_run.sh
-RUN chmod +x /usr/bin/docker_run.sh 
-CMD ["docker_run.sh"]
+RUN apt-get update && apt-get install -y \
+    python3 \
+    python3-pip \
+    unzip \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN rm /bin/sh && ln -s /bin/bash /bin/sh
+
+RUN pip3 install pipenv
+RUN pip install urllib3
+
+COPY ./ /DroidAugmentor/
+
+RUN pip3 install -r requirements.txt
+
+RUN chmod +x /DroidAugmentor/shared/app_run.sh
+CMD ["/DroidAugmentor/shared/app_run.sh"]
 
 
 
