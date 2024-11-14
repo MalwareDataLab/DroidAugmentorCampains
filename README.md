@@ -116,6 +116,11 @@ pip install mlflow
 ```bash
 mlflow server --port 6002
 ```
+3. Execute os experimentos com a flag -ml:
+
+```bash
+python3 run_experimentos.py -ml
+```
 
 
 4. Após o fim da execução, acesse o endereço http://localhost:6002/ no seu navegador para visualizar os resultados.
