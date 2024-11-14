@@ -54,7 +54,11 @@ Executar a demonstração de funcionamento da ferramenta:
 Para a reprodução dos mesmos experimentos (campanhas) do paper execute o seguinte comando:
    **Opção 1**: No ambiente local.
    ```bash
-     python3 run_experimentos.py -
+   ./run_reproduce_WRSEG24_venv.sh
+   ```
+   **Opção 2**: No ambiente docker
+   ```bash
+   ./run_reproduce_WRSEG24_docker.sh
    ```
 
  
