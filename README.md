@@ -51,45 +51,18 @@ Executar a demonstração de funcionamento da ferramenta:
    ```
 
 ## 3. Reprodução 
-Para a reprodução dos mesmos experimentos (campanhas) do paper utilize uma das seguintes opções. A execução leva em torno de 14 horas em um computador AMD Ryzen 7 5800x, 8 cores, 64 GB RAM. 
-
+Para a reprodução dos mesmos experimentos (campanhas) do paper execute o seguinte comando:
    **Opção 1**: No ambiente local.
    ```bash
-   ./run_reproduce_sf24_venv.sh
+     python3 run_experimentos.py -
    ```
 
  
-   **Opção 2**: No ambiente Docker.
-   ```bash
-   ./run_reproduce_sf24_docker.sh
-   ```
-
-## 4. Outras opções de execução
-   O script **run_balanced_datasets.sh** é responsável pela execução dos datasets balanceaddos dos experimentos com base na entrada especificada pelo usuário.
-   Executar o script: 
 
 
-   ```bash
-   ./run_balanced_datasets.sh
-   ```
 
 
-#### 4.1. Executando outros experimentos
-
-A ferramenta conta com o **run_campaign.py** para automatizar o treinamento e a avaliação da cGAN. O **run_campaign.py** permite executar várias campanhas de avaliação com diferentes parâmetros, registrando os resultados em arquivos de saída para análise posterior. O usuário poderá visualmente realizar uma análise comparativa das diferentes configurações em relação aos conjuntos de dados utilizados.
-
-Exemplo de execução de uma campanha pré-configurada com base na execução do Kronodroid R do artigo:
-
-```
-pipenv run python3 run_campaign.py -c Kronodroid_r
-```
-
-
-Mesma campanha (Kronodroid_r) sendo executada diretamente na aplicação (**main.py**):
-```
-pipenv run python main.py --verbosity 20 --input_dataset datasets/kronodroid_real_device-balanced.csv --dense_layer_sizes_g 4096 --dense_layer_sizes_d 2048 --number_epochs 500 --k_fold 10 --num_samples_class_benign 10000 --num_samples_class_malware 10000 --training_algorithm Adam
-```
-#### 4.2. Parâmetros dos testes automatizados:
+#### 4 Parâmetros dos testes automatizados:
 
       --------------------------------------------------------------
 
@@ -122,54 +95,10 @@ pipenv run python main.py --verbosity 20 --input_dataset datasets/kronodroid_rea
     --------------------------------------------------------------
 
 
-#### 4.3. Executando a ferramenta no Google Colab
-Google collab é uma ferramenta cloud que permite a execução de códigos Python no seu navegador.
-
-1. Acesse o seguinte link para utilizar a ferramenta Google colab: https://colab.google/
-   
-2. Crie um novo notebook, clicando no botão **New notebook** no topo direito da tela.
-   
-<td><img src= https://github.com/SBSegSF24/MalSynGen/assets/174879323/628010a5-f2e9-48dc-8044-178f7e9c2c37 style="max-width:100%;"></td>
-
-3. Faça o upload da pasta do MalSynGen no seu Google Drive.
-
-4. Adicione uma nova célula ao clicar no botão **+code** no topo esquerda da tela, contendo o seguinte  trecho de código para acessar a pasta do Google Drive.
-```
-from google.colab import drive
-drive.mount('/content/drive')
-```
-5. Crie uma célula para acessar a pasta do MalSynGen (Exemplo):
-```
-cd /content/drive/MyDrive/MalSynGen-main
-```
-6. Instale as dependências da ferramenta, criando uma célula com o seguinte código:
-```
-!pip install -r requirements.txt
-```
-7. Crie uma célula para a execução da ferramenta (Exemplo):
-```
-!python main.py --verbosity 20 --input_dataset datasets/kronodroid_real_device-balanced.csv --dense_layer_sizes_g 4096 --dense_layer_sizes_d 2048 --number_epochs 500 --k_fold 10 --num_samples_class_benign 10000 --num_samples_class_malware 10000 --training_algorithm Adam
-```
-
-
-## 5. Fluxo de execução 
-![Screenshot from 2024-07-05 17-00-39](https://github.com/SBSegSF24/MalSynGen/assets/174879323/4d55117e-4203-4930-a0f5-2ed19c8857e3)
-
-O fluxo de execução da ferramenta consiste de três etapas:
-
-   **Seleção de dataset**: Nesta etapa,  realizamos o balanceamento pela classe minoritária, atravẽs do uso de técnicas de subamostragem. Os datasets balanceados e o código utilizado nesse processo se encontram em: https://github.com/SBSegSF24/MalSynGen/tree/accbe69f12bbf02d5d7f9c75291a60a5738bbb67/datasets
-
- O dataset balanceado é então processado nas etapas de treinamento e avaliação, através validação cruzada por meio de k-dobras (do inglês k-folds) onde são criados dois subconjuntos: subconjunto de avaliação (Dataset r) e subconjunto de treino (Dataset R).
-
-  **Treinamento**: Nessa etapa, a cGANs é treinada  e utilizada cGANs para gerar dados sintéticos, precisamos treinar classificadores para posteriormente verificarmos a utilidade dos dados sintéticos gerados: Dataset S (gerado a partir de R) e Dataset s (gerado a paritr de r).  Os classificadores utilizados são denominados TR-As(Treinado com dataset R, avaliado com s) e TS-Ar(Treinado com S, avaliado com r).
-
-   **Avaliação**: Esta etapa consiste da  execução e subsquente extração de métricas de utilidade dos classificadores, e fidelidade dos sintéticos atravês de uma comparação entre s e r. Por fim, verificamos se a utilidade dos dados sintéticos é fiel à utilidade dos dados reais através de testes como o de Wilcoxon no final da execução de dobras.
 
 
 
-
-
-## 6. Parâmetros da Ferramenta
+## 5. Parâmetros da Ferramenta
 |       Flag/ parametro       |                                  Descrição                                 | Obrigatório |
 |:---------------------------:|:--------------------------------------------------------------------------:|:-----------:|
 |     -i , --input_dataset    |              Caminho para o arquivo do dataset real de entrada             |     Sim     |
@@ -211,33 +140,14 @@ A ferramenta foi executada e testada com sucesso nos seguintes ambientes:
 
 3. **Hardware**: AMD Ryzen 7 5800X 8-core, 64GB RAM (3200MHz), NVDIA RTX3090 24GB. **Software**: WSL: 2.2.4.0, Docker version 24.0.7 (build 24.0.7-0ubuntu2~22.04.1), Python 3.11.5
 
-## 8. Datasets
-O diretório **datasets** do GitHub contém os conjuntos de dados balanceados KronoDroid_emulator e KronoDroid_real_device utilizados nos experimentos do trabalho. O código utilizado para balancear os datasets originais também está disponível. O diretório **datasets** contém também os arquivos de validação de cada dataset e código de validação utilizado no subdiretório **validation**. As versões originais dos datasets tem como origem o repositório [https://github.com/aleguma/kronodroid](https://github.com/aleguma/kronodroid).
-![image](https://github.com/user-attachments/assets/534462b5-b0f2-4fe1-93c4-c0446d0d2fa4)
+## 7. Datasets
+O diretório **datasets** do GitHub contém os conjuntos de dados balanceados utilizados nos experimentos, estes foram obtidos do Repositório [Malware data hunter](https://github.com/Malware-Hunter/datasets/tree/main)
 
 
 
-## 9. Ferramentas de rastreamento
-### 9.1. Aimstack
+## 8. Ferramentas de rastreamento
 
-1. Instalar a ferramenta:
-
-```bash
-pip install aim
-```
-
-2. Executar MalSynGen com a opção -a ou --use_aim (Exemplo):
-```bash
-pipenv run python3 main.py -i datasets/kronodroid_real_device-balanced.csv  --num_samples_class_benign 10000 --num_samples_class_malware 10000 --batch_size 256 --number_epochs 300 --k_fold 10 -a
-```
-3. Após o final da execução, utilize o comando **aim up** na pasta do MalSynGen.
-```bash
-aim up
-```
-Documentação Aimstack: https://aimstack.readthedocs.io/en/latest/
-
-
-### 9.2. Mlflow
+### 8.1. Mlflow
 
 1. Instalar a ferramenta:
    
@@ -250,10 +160,7 @@ pip install mlflow
 ```bash
 mlflow server --port 6002
 ```
-3. Executar MalSynGen com a opção -ml ou --use_mlflow (Exemplo):
-```bash
-pipenv run python3 main.py -i datasets/kronodroid_real_device-balanced.csv  --num_samples_class_benign 10000 --num_samples_class_malware 10000 --batch_size 256 --number_epochs 300 --k_fold 10 -ml
-```
+
 
 4. Após o fim da execução, acesse o endereço http://localhost:6002/ no seu navegador para visualizar os resultados.
 
