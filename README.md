@@ -2,8 +2,8 @@
 
 1. Clonar o repositório e execute os seguintes comandos.
    ```bash
-    git clone https://github.com/SBSegSF24/MalSynGen.git
-    cd MalSynGen
+    git clone https://github.com/MalwareDataLab/WRSeg24-DroidAugmentor.git
+    cd WRSeg24-DroidAugmentor
    ```
 2. Instalação das dependências.
    
