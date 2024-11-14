@@ -61,48 +61,11 @@ Para a reprodução dos mesmos experimentos (campanhas) do paper execute o segui
    ./run_reproduce_WRSEG24_docker.sh
    ```
 
- 
 
 
 
 
-#### 4 Parâmetros dos testes automatizados:
-
-      --------------------------------------------------------------
-
-    --campaign ou -c:    Especifica a campanha de avaliação que você deseja executar. 
-                         Você pode fornecer o nome de uma campanha específica ou uma  
-                         lista de campanhas separadas por vírgula. 
-                         Por exemplo: --campaign SF24_4096_2048_10 ou --campaign 
-                          Kronodroid_e,kronodroid_r.
-
-    --demo ou -d:
-                         Ativa o modo demo. Quando presente, o script será executado 
-                         no modo demo, o que pode ter comportamento reduzido 
-                         ou exibir informações de teste.
-                         --verbosity ou -v: Especifica o nível de verbosidade do log.
-                         Pode ser INFO (1) ou DEBUG (2). 
-                         Por padrão, o nível de verbosidade é definido como INFO.
-
-
-     Outros parâmetros de entrada são definidos dentro das campanhas de avaliação em 
-     campaigns_available. Cada campanha tem suas próprias configurações específicas, 
-     como input_dataset, number_epochs, training_algorithm, dense_layer_sizes_g, 
-     dense_layer_sizes_d, classifier, activation_function, dropout_decay_rate_g, 
-     dropout_decay_rate_d, e data_type. As configurações podem variar dependendo do 
-     objetivo e das configurações específicas de cada campanha.  
-
-
-     Em campaigns_available o script irá iterar sobre as combinações de configurações 
-     especificadas e executar os experimentos correspondentes.
-
-    --------------------------------------------------------------
-
-
-
-
-
-## 5. Parâmetros da Ferramenta
+## 4. Parâmetros da Ferramenta
 |       Flag/ parametro       |                                  Descrição                                 | Obrigatório |
 |:---------------------------:|:--------------------------------------------------------------------------:|:-----------:|
 |     -i , --input_dataset    |              Caminho para o arquivo do dataset real de entrada             |     Sim     |
@@ -133,14 +96,14 @@ Para a reprodução dos mesmos experimentos (campanhas) do paper execute o segui
 |        -rid, --run_id       |  Opção ligado ao mlflow, utilizada para resumir uma execução não terminada |     Não     |
 |    -tb, --use_tensorboard   |          Opção para utilizar a ferramenta de rastreamento Tensorb          |     Não     |
 
-## 6. Datasets
+## 5. Datasets
 O diretório **datasets** do GitHub contém os conjuntos de dados balanceados utilizados nos experimentos, estes foram obtidos do Repositório [Malware data hunter](https://github.com/Malware-Hunter/datasets/tree/main)
 
 
 
-## 7. Ferramentas de rastreamento
+## 6. Ferramentas de rastreamento
 
-### 8.1. Mlflow
+### 6.1. Mlflow
 
 1. Instalar a ferramenta:
    
