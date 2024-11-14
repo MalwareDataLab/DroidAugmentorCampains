@@ -34,15 +34,22 @@ except ImportError as error:
     print()
     sys.exit(-1)
 COMMAND = "pipenv run python main.py  "
+DEFAULT_CAMPAIGN= ['Figura_1', 'Figura_2_a','Figura_2_b','Figura_3','Figura_4']
 
+def list_of_ints(arg):
+    return list(map(int, arg.split(',')))
+def list_of_floats(arg):
+    return list(map(float, arg.split(',')))
+# Define a custom argument type for a list of integers
+def list_of_strs(arg):
+    return list(map(str, arg.split(',')))
 
-def read_function():
+def read_function(entrada):
     # Read Excel file with multiple sheets
-    xls = pd.read_excel("Tabela_experimentos/tabela_experimentos.xlsx", sheet_name=['Figura 1', 'Figura 2 a','Figura 2 b','Figura 3','Figura 4'])
-    # Access individual sheets using sheet names
-    sheet1_df = xls['Figura 4']
-    sheet_name=['Figura 1', 'Figura 2 a','Figura 2 b','Figura 3','Figura 4']
-    dic_direct={'Figura 1':"Figura_1/", 'Figura 2 a':'Figura_2_a','Figura 2 b':"Figura_2_b/",'Figura 3':"Figura_3/",'Figura 4':"Figura_4/"}
+    xls = pd.read_excel("Tabela_experimentos/tabela_experimentos.xlsx", sheet_name=['Figura_1', 'Figura_2_a','Figura_2_b','Figura_3','Figura_4'])
+    # Access individual sheets using sheet name
+    sheet_name=entrada
+    dic_direct={'Figura_1':"Figura_1/", 'Figura_2_a':'Figura_2_a','Figura_2_b':"Figura_2_b/",'Figura_3':"Figura_3/",'Figura_4':"Figura_4/"}
     for sheet in sheet_name:
         sheet_df=xls[sheet]
         for index, row in sheet_df.iterrows():
@@ -64,6 +71,14 @@ def main():
     """
     Função principal que configura e executa as campanhas.
     """
-    read_function()
+
+    parser = argparse.ArgumentParser(description='Torrent Trace Correct - Machine Learning')
+    #definição dos arugmentos de entrada
+
+    parser.add_argument("--campaign", "-c",     help='Classificador (ou lista de classificadores separada por ,) padrão:{}.'.format(DEFAULT_CAMPAIGN), default=DEFAULT_CAMPAIGN, type=list_of_strs)
+    Parâmetros = parser.parse_args()
+    read_function(Parâmetros.campaign)
+
+
 if __name__ == '__main__':
     sys.exit(main())
