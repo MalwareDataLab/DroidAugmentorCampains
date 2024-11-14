@@ -40,12 +40,12 @@
 ## 2. Execução
 Executar a demonstração de funcionamento da ferramenta: 
 
-   **Opção 1**: instalar as dependências e executar uma demonstração em um ambiente Linux. A execução leva em torno de 5 minutos numa máquina AMD Ryzen 7 5800x, 8 cores, 64 GB RAM. 
+   **Opção 1**: instalar as dependências e executar uma demonstração em um ambiente Linux. 
    ```bash
    ./run_demo_venv.sh
    ```
 
-   **Opção 2**: Executar o docker demo que instancia uma versão reduzida do experimento.  A execução leva em torno de 5 minutos numa máquina AMD Ryzen 7 5800x, 8 cores, 64 GB RAM. 
+   **Opção 2**: Executar o docker demo que instancia uma versão reduzida do experimento.  
    ```bash
    ./run_demo_docker.sh
    ```
@@ -129,23 +129,12 @@ Para a reprodução dos mesmos experimentos (campanhas) do paper execute o segui
 |        -rid, --run_id       |  Opção ligado ao mlflow, utilizada para resumir uma execução não terminada |     Não     |
 |    -tb, --use_tensorboard   |          Opção para utilizar a ferramenta de rastreamento Tensorb          |     Não     |
 
-## 7. Ambientes de teste
-
-A ferramenta foi executada e testada com sucesso nos seguintes ambientes:
-
-
-1. **Hardware**: AMD Ryzen 7 5800x, 8 cores, 64 GB RAM. **Software**: Ubuntu Server 22.04.2 e 22.04.3, Python 3.8.10 e 3.10.12, Docker 24.07.
-
-2. **Hardware**: Intel Core i7-9700 CPU 3.00GHz, 8 cores, 16 GB RAM. **Software**: Debian GNU 11 e 12, Python 3.9.2 e 3.11.2, Docker 20.10.5 e 24.07.
-
-3. **Hardware**: AMD Ryzen 7 5800X 8-core, 64GB RAM (3200MHz), NVDIA RTX3090 24GB. **Software**: WSL: 2.2.4.0, Docker version 24.0.7 (build 24.0.7-0ubuntu2~22.04.1), Python 3.11.5
-
-## 7. Datasets
+## 6. Datasets
 O diretório **datasets** do GitHub contém os conjuntos de dados balanceados utilizados nos experimentos, estes foram obtidos do Repositório [Malware data hunter](https://github.com/Malware-Hunter/datasets/tree/main)
 
 
 
-## 8. Ferramentas de rastreamento
+## 7. Ferramentas de rastreamento
 
 ### 8.1. Mlflow
 
