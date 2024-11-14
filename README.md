@@ -261,42 +261,4 @@ pipenv run python3 main.py -i datasets/kronodroid_real_device-balanced.csv  --nu
 Documentação Mlflow: https://mlflow.org/docs/latest/index.html
 
 
-### 9.3. Tensorboard
-
-1. Instalar a ferramenta:
-
-```bash
-pip install tensorboard
-```
-
-2. Executar MalSynGen com a opção -tb ou --use_tensorboard (Exemplo):
-```bash
-pipenv run python3 main.py -i datasets/kronodroid_real_device-balanced.csv  --num_samples_class_benign 10000 --num_samples_class_malware 10000 --batch_size 256 --number_epochs 300 --k_fold 10 -tb
-```
-
-3. Visualizar os resultados com o comando:
-   
-```bash
-tensorboard --logdir=tensorboardfolder/ --port=6002
-```
-
-Documentação TensorBoard: https://www.tensorflow.org/tensorboard/get_started?hl=pt-br
-## 10. Overview da documentação do código
-A documentação do código está disponivel no formato html na pasta [docs](https://github.com/SBSegSF24/MalSynGen/tree/f89ddcd20f1dc4531bff671cc3a08a8d5e7c411d/docs), para acessar a documentação abra o arquivo [index.html](https://github.com/SBSegSF24/MalSynGen/blob/f89ddcd20f1dc4531bff671cc3a08a8d5e7c411d/docs/index.html) no seu ambiente local.
-
-A página princial apresenta a documentação do README.md
-![image](https://github.com/SBSegSF24/MalSynGen/assets/174879323/4a738e53-ebae-4e5b-99ad-9de269139cc7)
-
-### 10.1. Páginas relacionadas
-![image](https://github.com/SBSegSF24/MalSynGen/assets/174879323/23ad1214-4644-49f7-ba60-a574575a8cc3)
-A aba **Páginas relacionadas** contém as informaçẽs do artefatos apêndice.
-### 10.2. Namespace
-![image](https://github.com/SBSegSF24/MalSynGen/assets/174879323/8fb63e75-ff4e-482f-855e-52e471fa90fb)
-A aba **namespace** descreve os módulos e funções do código da ferramenta.
-### 10.3. Classes
-![image](https://github.com/SBSegSF24/MalSynGen/assets/174879323/84f66aa6-ec28-4894-8c3a-e5d6e5f0226b)
-A aba **Classes** contém as classes utilizadas, suas hierarquias, variáveis e implementações na implementação da ferramenta.
-
-
-
 
