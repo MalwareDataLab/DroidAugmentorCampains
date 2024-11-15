@@ -1,0 +1,20 @@
+2024-11-14 21:06:10,084	***	Command:
+	run_campaign.py -c campanhas_SF24
+
+2024-11-14 21:06:10,085	***	Settings:
+2024-11-14 21:06:10,085	***		batch_size                       : 64
+2024-11-14 21:06:10,085	***		campaign                         : campanhas_SF24
+2024-11-14 21:06:10,085	***		demo                             : False
+2024-11-14 21:06:10,085	***		dense_layer_sizes_d              : None
+2024-11-14 21:06:10,085	***		dense_layer_sizes_g              : None
+2024-11-14 21:06:10,085	***		dropout_decay_rate_d             : None
+2024-11-14 21:06:10,085	***		dropout_decay_rate_g             : None
+2024-11-14 21:06:10,085	***		initializer_deviation            : None
+2024-11-14 21:06:10,085	***		initializer_mean                 : None
+2024-11-14 21:06:10,085	***		number_epochs                    : None
+2024-11-14 21:06:10,085	***		optimizer_discriminator_learning : None
+2024-11-14 21:06:10,085	***		optimizer_generator_learning     : None
+2024-11-14 21:06:10,085	***		use_mlflow                       : False
+2024-11-14 21:06:10,085	***		verbosity                        : 20
+2024-11-14 21:06:10,085	***	
+2024-11-14 21:06:10,085	***	Campaign 'campanhas_SF24' not found

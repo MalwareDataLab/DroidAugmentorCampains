@@ -58,7 +58,7 @@ def read_function(entrada,ml):
             if ml:
                 cmd = COMMAND2
             else: 
-                COMMAND
+               cmd =  COMMAND
 
             combination="{}dropout_d_{}_dropout_g{}epochs_{}_Layers_density".format(row['dropout_decay_rate_d'],row['dropout_decay_rate_g'],row['Epochs'],row["Layer_size"])
             cmd+="--output_dir {}{}/{}/  ".format(dic_direct[sheet],row["Dataset"],combination)

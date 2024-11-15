@@ -34,3 +34,39 @@
 2024-11-14 21:01:15,659	***		verbosity                        : 20
 2024-11-14 21:01:15,659	***	
 2024-11-14 21:01:15,836	***	Iniciando treinamento do modelo adversarial.
+2024-11-14 21:08:14,073	***	Command:
+	main.py --output_dir Figura_1/balanced_adroit/0.4dropout_d_0.2_dropout_g100epochs_256_Layers_density/ --dropout_decay_rate_d 0.4 --dropout_decay_rate_g 0.2 --dense_layer_sizes_g 256 --dense_layer_sizes_d 256 --number_epochs 100 -i datasets/reduced_balanced_adroit.csv
+
+2024-11-14 21:08:14,073	***	Settings:
+2024-11-14 21:08:14,103	***		activation_function              : LeakyReLU
+2024-11-14 21:08:14,103	***		batch_size                       : 32
+2024-11-14 21:08:14,103	***		classifier                       : ['RandomForest', 'SupportVectorMachine', 'DecisionTree', 'AdaBoost', 'Perceptron', 'SGDRegressor', 'XGboost']
+2024-11-14 21:08:14,103	***		data_type                        : float32
+2024-11-14 21:08:14,103	***		dense_layer_sizes_d              : [256]
+2024-11-14 21:08:14,103	***		dense_layer_sizes_g              : [256]
+2024-11-14 21:08:14,103	***		dropout_decay_rate_d             : 0.4
+2024-11-14 21:08:14,103	***		dropout_decay_rate_g             : 0.2
+2024-11-14 21:08:14,103	***		initializer_deviation            : 0.02
+2024-11-14 21:08:14,103	***		initializer_mean                 : 0.0
+2024-11-14 21:08:14,103	***		input_dataset                    : datasets/reduced_balanced_adroit.csv
+2024-11-14 21:08:14,103	***		k_fold                           : 5
+2024-11-14 21:08:14,103	***		latent_dimension                 : 128
+2024-11-14 21:08:14,103	***		latent_mean_distribution         : 0.0
+2024-11-14 21:08:14,103	***		latent_stander_deviation         : 1.0
+2024-11-14 21:08:14,103	***		num_samples_class_benign         : 2000
+2024-11-14 21:08:14,103	***		num_samples_class_malware        : 2000
+2024-11-14 21:08:14,103	***		number_epochs                    : 100
+2024-11-14 21:08:14,103	***		optimizer_discriminator_learning : 0.0001
+2024-11-14 21:08:14,104	***		optimizer_generator_learning     : 0.0001
+2024-11-14 21:08:14,104	***		output_dir                       : Figura_1/balanced_adroit/0.4dropout_d_0.2_dropout_g100epochs_256_Layers_density/
+2024-11-14 21:08:14,104	***		path_confusion_matrix            : confusion_matrix
+2024-11-14 21:08:14,104	***		path_curve_loss                  : training_curve
+2024-11-14 21:08:14,104	***		run_id                           : None
+2024-11-14 21:08:14,104	***		save_models                      : True
+2024-11-14 21:08:14,104	***		training_algorithm               : Adam
+2024-11-14 21:08:14,104	***		use_aim                          : False
+2024-11-14 21:08:14,104	***		use_mlflow                       : False
+2024-11-14 21:08:14,104	***		use_tensorboard                  : False
+2024-11-14 21:08:14,104	***		verbosity                        : 20
+2024-11-14 21:08:14,104	***	
+2024-11-14 21:08:14,201	***	Iniciando treinamento do modelo adversarial.

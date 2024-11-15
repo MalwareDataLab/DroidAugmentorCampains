@@ -2,4 +2,5 @@
 
 #pipenv install -r requirements.txt
 
-pipenv run python3 run_campaign.py -c campanhas_SF24
+pipenv run python3 run_experimentos.py
+

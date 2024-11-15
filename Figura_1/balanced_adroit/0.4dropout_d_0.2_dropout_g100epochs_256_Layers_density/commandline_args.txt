@@ -38,7 +38,7 @@
   "optimizer_discriminator_learning": 0.0001,
   "latent_stander_deviation": 1.0,
   "use_aim": false,
-  "use_mlflow": true,
+  "use_mlflow": false,
   "run_id": null,
   "use_tensorboard": false
 }
