@@ -34,6 +34,7 @@ except ImportError as error:
     print()
     sys.exit(-1)
 COMMAND = "pipenv run python main.py  "
+COMMAND2 = "pipenv run python main.py  -ml "
 DEFAULT_CAMPAIGN= ['Figura_1', 'Figura_2_a','Figura_2_b','Figura_3','Figura_4']
 
 def list_of_ints(arg):
@@ -44,7 +45,7 @@ def list_of_floats(arg):
 def list_of_strs(arg):
     return list(map(str, arg.split(',')))
 
-def read_function(entrada):
+def read_function(entrada,ml):
     # Read Excel file with multiple sheets
     xls = pd.read_excel("Tabela_experimentos/tabela_experimentos.xlsx", sheet_name=['Figura_1', 'Figura_2_a','Figura_2_b','Figura_3','Figura_4'])
     # Access individual sheets using sheet name
@@ -54,7 +55,11 @@ def read_function(entrada):
         sheet_df=xls[sheet]
         for index, row in sheet_df.iterrows():
             print(row['Dataset'], row['K_Fold'])
-            cmd = COMMAND
+            if ml:
+                cmd = COMMAND2
+            else: 
+                COMMAND
+
             combination="{}dropout_d_{}_dropout_g{}epochs_{}_Layers_density".format(row['dropout_decay_rate_d'],row['dropout_decay_rate_g'],row['Epochs'],row["Layer_size"])
             cmd+="--output_dir {}{}/{}/  ".format(dic_direct[sheet],row["Dataset"],combination)
             cmd+= "--dropout_decay_rate_d {} ".format(row['dropout_decay_rate_d'])
@@ -76,8 +81,9 @@ def main():
     #definição dos arugmentos de entrada
 
     parser.add_argument("--campaign", "-c",     help='Classificador (ou lista de classificadores separada por ,) padrão:{}.'.format(DEFAULT_CAMPAIGN), default=DEFAULT_CAMPAIGN, type=list_of_strs)
+    parser.add_argument('-ml','--use_mlflow',action='store_true',help="Uso ou não da ferramenta mlflow para monitoramento") 
     Parâmetros = parser.parse_args()
-    read_function(Parâmetros.campaign)
+    read_function(Parâmetros.campaign,Parâmetros.use_mlflow)
 
 
 if __name__ == '__main__':

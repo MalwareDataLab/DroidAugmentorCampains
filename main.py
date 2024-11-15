@@ -1258,11 +1258,11 @@ def create_argparse():
                         choices=['int8', 'float16', 'float32'],
                         help='Tipo de dado para representar as características das amostras.')
 
-    parser.add_argument('--num_samples_class_malware', type=int,required=True,
+    parser.add_argument('--num_samples_class_malware', type=int,
                         default=DEFAULT_NUMBER_GENERATE_MALWARE_SAMPLES,
                         help='Número de amostras da Classe 1 (maligno).')
 
-    parser.add_argument('--num_samples_class_benign', type=int,required=True,
+    parser.add_argument('--num_samples_class_benign', type=int,
                         default=DEFAULT_NUMBER_GENERATE_BENIGN_SAMPLES,
                         help='Número de amostras da Classe 0 (benigno).')
 
